@@ -105,7 +105,7 @@ func (p *Parser) parseExpression() Node {
 	left := p.advance()
 
 	// Check if the next token is an operator
-	if p.Peek().Type == "PLUS" || p.Peek().Type == "MINUS" {
+	if p.Peek().Type == "PLUS" || p.Peek().Type == "MINUS" || p.Peek().Type == "MULTIPLY" {
 		operator := p.advance()
 
 		// Parse the right-hand side

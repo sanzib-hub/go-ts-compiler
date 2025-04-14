@@ -17,6 +17,7 @@ const (
 	ASSIGN    = "ASSIGN"
 	PLUS      = "PLUS"
 	MINUS     = "MINUS"
+	MULTIPLY  = "MULTIPLY"
 	LPAREN    = "LPAREN"
 	RPAREN    = "RPAREN"
 	SEMICOLON = "SEMICOLON"

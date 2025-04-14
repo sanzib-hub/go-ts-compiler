@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"go-ts-compiler/interpreter"
 	"go-ts-compiler/lexer"
 	"go-ts-compiler/parser"
 	"log"
@@ -20,16 +21,12 @@ func main() {
 		tokens = append(tokens, tok)
 	}
 
-	fmt.Println("Tokens:")
-	for _, tok := range tokens {
-		fmt.Printf("%+v\n", tok)
-	}
-
 	p := parser.New(tokens)
+	env := interpreter.NewEnvironment()
 
-	fmt.Println("Parsed Statements:")
-	for stmt := p.ParseStatement(); stmt != nil; stmt = p.ParseStatement() {
-		fmt.Println(stmt.String())
+	for p.Peek().Type != "EOF" {
+		stmt := p.ParseStatement()
+		value := interpreter.Eval(stmt, env)
+		fmt.Println("Result:", value)
 	}
-	
 }
